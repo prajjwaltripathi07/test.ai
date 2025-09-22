@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Helper</title>
+  <style>
+    :root {
+      --bg-color: #f4f5f7; --text-color: #172b4d; --accent-color: #0052cc;
+      --accent-text: #ffffff; --border-color: #dfe1e6; --answer-bg: #e9f2ff;
+    }
+    body.dark-mode {
+      --bg-color: #1e2124; --text-color: #dcddde; --accent-color: #7289da;
+      --accent-text: #ffffff; --border-color: #424549; --answer-bg: #282b30;
+    }
+    body {
+      width: 320px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 16px; background-color: var(--bg-color); color: var(--text-color);
+      margin: 0; transition: background-color 0.2s linear;
+    }
+    .header {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;
+    }
+    h3 { margin: 0; font-size: 16px; }
+    button {
+      width: 100%; padding: 10px; font-size: 14px; font-weight: 600;
+      background-color: var(--accent-color); color: var(--accent-text);
+      border: none; border-radius: 4px; cursor: pointer; margin-bottom: 16px;
+    }
+    .result-container { text-align: left; }
+    #highlightedAnswer {
+      background-color: var(--answer-bg); border: 1px solid var(--border-color);
+      border-radius: 4px; padding: 12px; font-size: 16px; font-weight: 600; margin-bottom: 12px;
+    }
+    #explanationText { font-size: 14px; line-height: 1.5; white-space: pre-wrap; }
+    .switch { position: relative; display: inline-block; width: 40px; height: 22px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #ccc; transition: .4s; border-radius: 22px;
+    }
+    .slider:before {
+      position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px;
+      background-color: white; transition: .4s; border-radius: 50%;
+    }
+    input:checked + .slider { background-color: var(--accent-color); }
+    input:checked + .slider:before { transform: translateX(18px); }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h3>AI Helper Pro</h3>
+    <label class="switch">
+      <input type="checkbox" id="themeToggle">
+      <span class="slider"></span>
+    </label>
+  </div>
+  <button id="findQuestionBtn">Find Answer</button>
+  <div id="resultContainer" class="result-container" style="display:none;">
+    <div id="highlightedAnswer"></div>
+    <hr>
+    <div id="explanationText"></div>
+  </div>
+  <div id="statusText" style="display:none;"></div>
+  <script src="popup.js"></script>
+</body>
+</html>
