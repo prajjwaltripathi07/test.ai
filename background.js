@@ -1,5 +1,5 @@
 const API_KEY = "AIzaSyCcGpruP1qQKABrbh1s1c3G7kY90QBlz8Y";
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
+const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 ;
 
 // A helper function to fetch an image URL and convert it to a base64 string
